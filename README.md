@@ -10,8 +10,6 @@ El proyecto está configurado para ejecutarse con un dataset. Sin embargo, el da
 ## Autoría
 Este proyecto ha sido desarrollado como Trabajo de Fin de Máster por Suriel Aido Teruel, para el Máster Universitario de Lógica, Computación e Inteligencia Aritificial (MULCIA) por la univesidad de sevilla. El autor da permiso para cualquier tipo de trabajo en el que pueda usarse parcial o completamente el código en cualquier proyecto que fuera necesario, agradeciendo el reconocimiento de su autoría
 
-################################################
-
 # EMP 2021
 End-of-Master Project: Automatic classification of films using Deep Learning.
 
