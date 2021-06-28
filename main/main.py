@@ -75,7 +75,7 @@ def executeTFM(action):
 def charge_classes_training_execution():
     vit = TrainVITModel((72, 72, 3), 0.001, 0.0001, 32, 100, 72, 6, 64, 4, 8, [2048, 1024], load_dataset=True)
     # CNN está mal, tengo que mirar los parámetros.
-    cnn = MyConvolutionalNetwork(100, 112, 112, 10, 500, 100, 32, 64, (3, 3), (2, 2), (2, 2), 51, 0.0005)
+    cnn = MyConvolutionalNetwork(100, 72, 72, 10, 500, 100, 32, 64, (3, 3), (2, 2), (2, 2), 51, 0.0005)
     transfer_resnet = TransferLearningAboutPaper(150, 150, 32, 51, 200, base_type='resnet')
     transfer_vgg = TransferLearningAboutPaper(150, 150, 32, 51, 200, base_type='vgg')
     transfer_inception = TransferLearningAboutPaper(150, 150, 32, 51, 200)
@@ -99,6 +99,5 @@ def charge_metrics_execution():
     metrics_inception = MyMetrics('execution/predictions_files/inception_predictions.txt')
     metrics_vgg = MyMetrics('execution/predictions_files/vgg_predictions.txt')
     metrics_resnet = MyMetrics('execution/predictions_files/clip_predictions.txt')
-    metrics_vit = MyPredictions('execution/predictions_files/vit_predictions.txt')
 
     return metrics_vit, metrics_cnn, metrics_inception, metrics_vgg, metrics_resnet, metrics_clips
