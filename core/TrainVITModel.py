@@ -95,35 +95,7 @@ class TrainVITModel:
             self.mlp(x3, hidden_units=self.transformer_units, dropout_rate=0.1)
             # Saltamos la segunda conexión
             enconded_patches = layers.Add()([x3, x2])
-
-            x4 = layers.LayerNormalization(epsilon=1e-6)(enconded_patches)
-            # Creamos una capa de atención con múltiples cabeeras
-            attention_output = tf.keras.layers.MultiHeadAttention(
-                num_heads=self.num_heads, key_dim=self.projection_dim, dropout=0.1
-            )(x4, x4)
-            # Saltamos la primera conexión
-            x5 = layers.Add()([attention_output, enconded_patches])
-            # Segunda capa de normalización
-            x6 = layers.LayerNormalization(epsilon=1e-6)(x5)
-            # MLP
-            self.mlp(x6, hidden_units=self.transformer_units, dropout_rate=0.1)
-            # Saltamos la segunda conexión
-            enconded_patches = layers.Add()([x6, x5])
-
-            x7 = layers.LayerNormalization(epsilon=1e-6)(enconded_patches)
-            # Creamos una capa de atención con múltiples cabeeras
-            attention_output = tf.keras.layers.MultiHeadAttention(
-                num_heads=self.num_heads, key_dim=self.projection_dim, dropout=0.1
-            )(x7, x7)
-            # Saltamos la primera conexión
-            x8 = layers.Add()([attention_output, enconded_patches])
-            # Segunda capa de normalización
-            x9 = layers.LayerNormalization(epsilon=1e-6)(x8)
-            # MLP
-            self.mlp(x9, hidden_units=self.transformer_units, dropout_rate=0.1)
-            # Saltamos la segunda conexión
-            enconded_patches = layers.Add()([x9, x8])
-
+            
         # Creamos un tensor con el batch_size y la projection_dim pertinentes
         representation = layers.LayerNormalization(epsilon=1e-6)(enconded_patches)
         representation = layers.Flatten()(representation)
